@@ -1,6 +1,6 @@
 # iCloud Tray Restart
 
-[简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · English · [日本語](README.ja.md)
+English · [简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · [日本語](README.ja.md)
 
 Adds **Restart iCloud** to the system tray menu of the Microsoft Store version of iCloud for Windows. It can help when syncing stalls. The label follows the Windows preferred language order and supports English, Simplified Chinese, Traditional Chinese, and Japanese.
 
