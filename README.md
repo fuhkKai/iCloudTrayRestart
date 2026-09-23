@@ -1,32 +1,65 @@
+<div align="center">
+
 # iCloud Tray Restart
 
-English · [简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · [日本語](README.ja.md)
+**Restart iCloud. Right from the tray.**
 
-Adds **Restart iCloud** to the system tray menu of the Microsoft Store version of iCloud for Windows. It can help when syncing stalls. The label follows the Windows preferred language order and supports English, Simplified Chinese, Traditional Chinese, and Japanese.
+**English** · [简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · [日本語](README.ja.md)
 
-## Install
+[**↓ Download for Windows x64**](https://github.com/fuhkKai/iCloudTrayRestart/releases/latest) · [Release notes](https://github.com/fuhkKai/iCloudTrayRestart/releases/tag/v0.1.0) · [Report an issue](https://github.com/fuhkKai/iCloudTrayRestart/issues)
 
-1. Download the Windows x64 ZIP from the [latest release](https://github.com/fuhkKai/iCloudTrayRestart/releases/latest) and extract it to a permanent folder.
-2. Run `scripts\Install.cmd`. The app starts when the current user signs in; administrator rights are not required.
-3. Choose the restart item in the iCloud tray menu. To remove it, run `scripts\Uninstall.cmd`.
+</div>
 
-Before updating, close the iCloud main window and run the uninstall script. Replace the files, then install again and start iCloud.
+---
 
-## Compatibility and build
+Adds **Restart iCloud** to the existing tray menu of **iCloud for Windows (Microsoft Store)**. A quick way to restart iCloud when syncing stalls.
 
-Tested on Windows 11 x64 with the Microsoft Store version of iCloud for Windows `15.10.39.0`. Windows 10 and other iCloud versions have not been tested. Only the x64 Store version is supported.
+## Get started
 
-To build from source, use Visual Studio 2022 with the x64 C++ tools and CMake:
+1. Download the **Windows x64 ZIP** from the latest release and extract it to a folder you plan to keep. Choose the app ZIP, not “Source code”.
+2. Double-click `scripts\Install.cmd`. No administrator rights are needed; the helper starts now and whenever you sign in.
+3. Open iCloud, right-click its system tray icon, and choose **Restart iCloud**.
+
+The menu follows your Windows preferred language order: English, 简体中文, 繁體中文, 日本語.
+
+> Tested with Windows 11 x64 and Microsoft Store iCloud **15.10.39.0**. Windows 10 and other iCloud versions are untested; only the x64 Store app is supported.
+
+## More information
+
+<details>
+<summary>Update or uninstall</summary>
+
+**Update:** Exit iCloud, run `scripts\Uninstall.cmd`, replace the extracted files, then run `scripts\Install.cmd` and open iCloud again.
+
+**Uninstall:** Run `scripts\Uninstall.cmd`, then exit and reopen iCloud to remove the loaded menu extension. The script keeps the project folder; you can delete it afterward.
+
+</details>
+
+<details>
+<summary>Missing menu or troubleshooting</summary>
+
+Make sure iCloud is running and that you kept the extracted folder in place. If the menu is unavailable, use `tools\RestartICloud.cmd`.
+
+For an issue report, include your Windows and iCloud versions and relevant lines from `%LOCALAPPDATA%\iCloudTrayRestart\Logs\bridge.log`.
+
+</details>
+
+<details>
+<summary>Build from source · implementation</summary>
+
+Use Visual Studio 2022 with the x64 C++ tools and CMake 3.21 or newer:
 
 ```bat
 cmake -S . -B build\cmake -A x64
 cmake --build build\cmake --config Release
 ```
 
-Alternatively, run `scripts\BuildWithZig.cmd` with Zig 0.16. Output goes to `bin`.
+Alternatively, run `scripts\BuildWithZig.cmd` with Zig 0.16. Both methods write the executable and DLL to `bin`; then run `scripts\Install.cmd`.
 
-## Notes
+The helper loads a menu DLL into `iCloudHome.exe` without changing Apple's installed files. Restarting stops the iCloud package's processes and launches iCloud again, briefly interrupting sync.
 
-The app loads a menu DLL into `iCloudHome.exe`; it does not modify Apple's installed files. If the tray menu is unavailable, run `tools\RestartICloud.cmd`. Logs are in `%LOCALAPPDATA%\iCloudTrayRestart\Logs\bridge.log`.
+</details>
 
-Project code is [MIT licensed](LICENSE). Bundled MinHook has a [separate license](third_party/minhook/LICENSE.txt).
+---
+
+Project: [MIT](LICENSE) · Bundled MinHook: [license](third_party/minhook/LICENSE.txt)
