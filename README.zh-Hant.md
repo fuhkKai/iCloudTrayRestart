@@ -1,6 +1,6 @@
 # iCloud Tray Restart
 
-[简体中文](README.md) · 繁體中文 · [English](README.en.md) · [日本語](README.ja.md)
+[简体中文](README.zh-Hans.md) · 繁體中文 · [English](README.md) · [日本語](README.ja.md)
 
 在 Microsoft Store 版 iCloud for Windows 的系統匣選單加入「重新啟動 iCloud」，方便處理偶發的同步延遲。按鈕文字依 Windows 偏好語言順序顯示，支援英語、簡體中文、繁體中文和日語。
 

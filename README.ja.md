@@ -1,6 +1,6 @@
 # iCloud Tray Restart
 
-[简体中文](README.md) · [繁體中文](README.zh-Hant.md) · [English](README.en.md) · 日本語
+[简体中文](README.zh-Hans.md) · [繁體中文](README.zh-Hant.md) · [English](README.md) · 日本語
 
 Microsoft Store 版 iCloud for Windows のトレイメニューに「iCloudを再起動」を追加します。同期が滞ったときに利用できます。項目名は Windows の優先する言語の順序に従い、英語・簡体字中国語・繁体字中国語・日本語に対応します。
 
