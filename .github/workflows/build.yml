@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-x64:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build/ci -G "Visual Studio 17 2022" -A x64
+      - name: Build
+        run: cmake --build build/ci --config Release --parallel
+      - name: Check installer inputs
+        shell: pwsh
+        run: |
+          if (!(Test-Path 'bin/ICloudTrayBridge.exe')) { throw 'Bridge executable is missing' }
+          if (!(Test-Path 'bin/ICloudTrayMenu.dll')) { throw 'Tray menu DLL is missing' }
